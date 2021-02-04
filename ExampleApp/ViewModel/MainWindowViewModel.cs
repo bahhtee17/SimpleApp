@@ -9,7 +9,7 @@ namespace ExampleApp.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
-        private string title;
+        private string title = "Анализ статистики COVID-19";
 
         public string Title
         {
