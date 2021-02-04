@@ -11,12 +11,49 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
-    <Grid>
-        <TextBox  Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
-                  TextWrapping="Wrap"
-                  Width="300"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Margin="20"/>
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+        
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem VerticalAlignment="Center">
+                <TextBlock Text="Прогресс"/>
+            </StatusBarItem>
+
+            <StatusBarItem VerticalAlignment="Center">
+                <ProgressBar Width="100" Height="12" Value="30"/>
+            </StatusBarItem>
+        </StatusBar>
+        
+        <TabControl>
+            <TabItem Header="Вкладка1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Вкладка2"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
