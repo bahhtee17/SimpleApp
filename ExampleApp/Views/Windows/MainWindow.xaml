@@ -24,7 +24,7 @@
         
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem VerticalAlignment="Center">
-                <TextBlock Text="Прогресс"/>
+                <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
 
             <StatusBarItem VerticalAlignment="Center">
@@ -51,6 +51,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                 </Grid>
+                
             </TabItem>
             
             <TabItem Header="Вкладка2"></TabItem>
