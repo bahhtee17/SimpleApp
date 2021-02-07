@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using ExampleApp.Infrastructure.Commands;
 using ExampleApp.ViewModel.Base;
 
 namespace ExampleApp.ViewModel
@@ -35,6 +38,30 @@ namespace ExampleApp.ViewModel
         }
         #endregion
 
+
+        #region Commands
+        // Поле 
+        public ICommand CloseApplicationCommand { get; }
+
+        private bool CanCloseApplicationCommandExecute(object p) => true;
+
+
+        private void OnCloseApplicationCommandExecuted(object p)
+        {
+            Application.Current.Shutdown();
+        }
+        #endregion
+
+
+        public MainWindowViewModel()
+        {
+            #region Commands
+
+            CloseApplicationCommand = new LimdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+
+
+            #endregion
+        }
     }
 
 }
