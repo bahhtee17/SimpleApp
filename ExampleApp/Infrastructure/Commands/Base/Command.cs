@@ -7,18 +7,22 @@ using System.Windows.Input;
 
 namespace ExampleApp.Infrastructure.Commands.Base
 {
-    internal class Command : ICommand
+    internal abstract class Command : ICommand
     {
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
+        public event EventHandler CanExecuteChanged
         {
-           
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
-        public void Execute(object parameter)
-        {
+        public abstract bool CanExecute(object parameter);
+
+
+
+
+        public abstract void Execute(object parameter);
+        
             
-        }
+        
     }
 }
