@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:ExampleApp.ViewModel"
        xmlns:cmd="clr-namespace:ExampleApp.Infrastructure.Commands"
         xmlns:local="clr-namespace:ExampleApp" 
-        xmlns:cmd1="clr-namespace:ExampleApp.Infrastructure.Commands.Base"
+        xmlns:cmd1="clr-namespace:ExampleApp.Infrastructure.Commands.Base" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
         Title="{Binding Path=Title}" Height="450" Width="800" 
         >
@@ -42,7 +42,7 @@
             </StatusBarItem>
         </StatusBar>
         
-        <TabControl>
+        <TabControl SelectedIndex="{Binding SelectedPageIndex}">
             <TabItem Header="Вкладка1">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -76,7 +76,18 @@
                 
             </TabItem>
             
-            <TabItem Header="Вкладка2"></TabItem>
+            <TabItem Header="График">
+                <oxy:Plot>
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left"/>
+                        <oxy:LinearAxis Position="Bottom"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries Color="Red"
+                                    ItemsSource="{Binding TestDataPoints}"
+                                    DataFieldX="XValue"
+                                    DataFieldY="YValue"/>
+                </oxy:Plot>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
