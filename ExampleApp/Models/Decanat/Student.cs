@@ -21,6 +21,6 @@ namespace ExampleApp.Models.Decanat
     {
 
         public string Name { get; set; }
-        ICollection<Student> Students { get; set; } 
+      public ICollection<Student> Students { get; set; } 
     }
 }

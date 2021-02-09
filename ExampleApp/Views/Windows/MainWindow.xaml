@@ -43,7 +43,28 @@
         </StatusBar>
         
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-           
+            <TabItem Header="Студенты">
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="Группы">
+                        <ListBox ItemsSource="{Binding Groups}" 
+                                 DisplayMemberPath="Name"
+                                 SelectedItem="{Binding SelectedGroup}"/>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="{Binding SelectedGroup.Name, 
+                        FallbackValue='Студенты', 
+                        TargetNullValue='Группа не выбрана'}" 
+                              >
+                        
+                    </GroupBox>
+                    
+                </Grid>
+            </TabItem>
                
             
             
