@@ -58,9 +58,18 @@
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header="{Binding SelectedGroup.Name, 
                         FallbackValue='Студенты', 
-                        TargetNullValue='Группа не выбрана'}" 
-                              >
-                        
+                        TargetNullValue='Группа не выбрана'}">
+                        <DataGrid ItemsSource="{Binding SelectedGroup.Students}" 
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"/>
+                                <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}"/>
+                                <DataGridTextColumn Header="Дата Рождения" Binding="{Binding Birthday}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </GroupBox>
                     
                 </Grid>
