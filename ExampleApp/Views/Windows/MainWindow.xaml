@@ -43,38 +43,9 @@
         </StatusBar>
         
         <TabControl SelectedIndex="{Binding SelectedPageIndex}">
-            <TabItem Header="Вкладка1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle Fill="Aqua"
-                        Width="100" Height="50" VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                               Margin="50"
-                               x:Name="rec">
-                        <Rectangle.InputBindings>
-                            <MouseBinding Command="{Binding CloseApplicationCommand}"
-                                          MouseAction="LeftClick"/>
-                        </Rectangle.InputBindings>
-                    </Rectangle>
-                    <Button Content="Button" Width="100" Grid.Column="2" Grid.Row="0"></Button>
-
-                </Grid>
-                
-            </TabItem>
+           
+               
+            
             
             <TabItem Header="График">
                 <oxy:Plot>
