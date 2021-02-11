@@ -16,6 +16,17 @@ namespace ExampleApp.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
+
+
+        public object[] CompositeCollection  { get; }
+
+        private object _SelectedCompositeValue;
+        public object SelectedCompositeValue 
+        { get => _SelectedCompositeValue;
+            set => Set(ref _SelectedCompositeValue, value);
+        }
+
+
         public ObservableCollection<Group> Groups { get; }
 
         private Group _SelectedGroup;
@@ -72,7 +83,7 @@ namespace ExampleApp.ViewModel
 
         #region Commands
         // Поле 
-        public ICommand CloseApplicationCommand { get; }
+ public ICommand CloseApplicationCommand { get; }
 
         private bool CanCloseApplicationCommandExecute(object p) => true;
 
@@ -80,8 +91,50 @@ namespace ExampleApp.ViewModel
         private void OnCloseApplicationCommandExecuted(object p)
         {
             Application.Current.Shutdown();
+
         }
+
+
+        public ICommand CreateGroupCommand { get; }
+
+        private bool CanCreateGroupCommandExecute(object p) => true;
+
+        private void OnCreateGroupCommandExecuted(object p)
+        {
+            var group_max_index = Groups.Count + 1;
+            var new_group = new Group()
+            {
+                Name = $"Группа {group_max_index}",
+                Students = new ObservableCollection<Student>()
+            };
+            Groups.Add(new_group);
+        }
+
+
+        public ICommand DeleteGroupCommand { get; }
+
+        private bool CanDeleteGroupCommandExecute(object p) => p is Group group && Groups.Contains(group);
+
+        private void OnDeleteGroupCommandexecuted(object p)
+        {
+            if (!(p is Group group)) return;
+            Groups.Remove(group);
+        }
+
+
+
+
+
+
+
         #endregion
+
+
+
+
+
+
+
 
 
         //------------------------------------------------------------------------------------------------------
@@ -91,6 +144,8 @@ namespace ExampleApp.ViewModel
             #region Commands
 
             CloseApplicationCommand = new LimdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            CreateGroupCommand = new LimdaCommand(OnCreateGroupCommandExecuted, CanCreateGroupCommandExecute);
+            DeleteGroupCommand = new LimdaCommand(OnDeleteGroupCommandexecuted, CanDeleteGroupCommandExecute);
 
 
             #endregion
@@ -124,7 +179,15 @@ namespace ExampleApp.ViewModel
             });
             Groups = new ObservableCollection<Group>(groups);
 
-            
+
+            var data_list = new List<object>();
+            data_list.Add("Hello World");
+            data_list.Add(45);
+            var group = Groups[1];
+            data_list.Add(group);
+            data_list.Add(group.Students[0]);
+            CompositeCollection = data_list.ToArray();
+
         }
     }
 
