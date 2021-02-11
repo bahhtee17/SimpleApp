@@ -13,6 +13,7 @@ namespace ExampleApp.Models.Decanat
         public string Patronymic { get; set; }
         public DateTime Birthday { get; set; }
         public double Rating { get; set; }
+        public string Description { get; set; }
 
 
     }
@@ -21,6 +22,7 @@ namespace ExampleApp.Models.Decanat
     {
 
         public string Name { get; set; }
-      public ICollection<Student> Students { get; set; } 
+        public ICollection<Student> Students { get; set; }
+        public string Description { get; set; }
     }
 }
